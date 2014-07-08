@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Featured" option="Featured">
+		<message>
+			Show featured items
+		</message>
+	</layout>
+    <fields name="request">
+        <fieldset name="request">
+            <field name="limit" type="int"
+                   default="5"
+                   label="Limit"
+                   required="true" />
+            <field name="title" type="text"
+                   label="Title"
+                   required="true" />
+        </fieldset>
+    </fields>
+</metadata>
