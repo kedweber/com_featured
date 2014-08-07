@@ -1,9 +1,9 @@
 {
-    "name": "moyo/featured",
+    "name": "cta/featured",
     "type": "joomlatools-installer",
     "description": "Featured Package",
     "keywords": ["joomla", "featured"],
-    "homepage": "https://www.assembla.com/code/moyo-content/git-15/nodes",
+    "homepage": "https://github.com/cta-int/featured",
     "authors": [
         {
             "name": "Dave Li",
