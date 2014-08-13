@@ -19,9 +19,6 @@
     <files folder="administrator/components/com_featured">
         <file>featured.php</file>
 
-        <folder>controllers</folder>
-        <folder>databases</folder>
-        <folder>helpers</folder>
         <folder>language</folder>
         <folder>models</folder>
         <folder>views</folder>
