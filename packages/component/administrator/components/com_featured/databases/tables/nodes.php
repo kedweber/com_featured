@@ -18,10 +18,7 @@ class ComFeaturedDatabaseTableNodes extends KDatabaseTableDefault
 
         try
         {
-            if($this->getDatabase()->getTableSchema($table))
-            {
-                // Do nothing, because the table exists.
-            }
+            $this->getDatabase()->getTableSchema($table);
         }
         catch(Exception $e)
         {
