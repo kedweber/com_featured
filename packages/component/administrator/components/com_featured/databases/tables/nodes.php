@@ -27,6 +27,7 @@ class ComFeaturedDatabaseTableNodes extends KDatabaseTableDefault
         }
 
         $this->_base = $table;
+        $this->_name = $table;
     }
 
 	/**
