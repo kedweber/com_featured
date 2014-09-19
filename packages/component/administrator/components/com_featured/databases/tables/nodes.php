@@ -8,20 +8,17 @@ class ComFeaturedDatabaseTableNodes extends KDatabaseTableDefault
     {
         parent::__construct($config);
 
-        // We will automagically set the name.
-        // This is done so the featurable works on two or more languages.
+        // Set the table for multilingual purposes.
         $lang_tag = JFactory::getLanguage()->getTag();
         $parts = explode('-', $lang_tag);
         $lang = $parts[0];
         $base = 'featured_nodes';
         $table = ($lang != 'en' ? $lang . '_' : '') . $base;
 
-        try
-        {
+        try {
             $this->getDatabase()->getTableSchema($table);
         }
-        catch(Exception $e)
-        {
+        catch(Exception $e) {
             // The table doesn't exist, so reset it.
             $table = $base;
         }
