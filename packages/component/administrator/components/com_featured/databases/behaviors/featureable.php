@@ -24,19 +24,6 @@ class ComFeaturedDatabaseBehaviorFeatureable extends KDatabaseBehaviorAbstract
 		return $methods;
 	}
 
-	protected function _beforeTableInsert(KCommandContext $context)
-	{
-//		die('test');
-	}
-
-	/**
-	 * @param KCommandContext $context
-	 */
-	protected function _afterTableInsert(KCommandContext $context)
-	{
-//		die('test');
-	}
-
 	protected function _beforeTableUpdate(KCommandContext $context)
 	{
 		$this->_setFeatured($context);
