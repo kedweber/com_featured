@@ -29,16 +29,62 @@ class ComFeaturedDatabaseBehaviorFeatureable extends KDatabaseBehaviorAbstract
 		$this->_setFeatured($context);
 	}
 
+    /**
+     * Delete the node from the featured table in all languages
+     *
+     * @param KCommandContext $context
+     */
+    protected function _afterTableDelete(KCommandContext $context)
+    {
+        $row = $this->getService('com://admin/featured.model.nodes')->row($context->data->id)->table($this->getMixer()->getTable()->getBase())->getItem();
+        $this->_remove($row);
+
+        // Remove from other languages
+        $table      = $row->getTable();
+        $database   = $table->getDatabase();
+        $languages	= $this->getLanguages();
+
+        foreach($languages as $language) {
+            $iso_code = $language->sef;
+
+            $name = $this->getTableName($iso_code, $table);
+
+            if($name == $table->getName()) {
+                continue;
+            }
+
+            try {
+                if($database->getTableSchema($name)) {
+                    $query = $database->getQuery();
+                    $query->where('row', '=', $context->data->id);
+                    $query->where('table', '=', $this->getMixer()->getTable()->getBase());
+                    $database->delete($name, $query);
+                }
+            } catch(Exception $e) { }
+        }
+    }
+
+    protected function _remove($row)
+    {
+        $row->delete();
+    }
+
+    /**
+     * Add or remove from the featured table.
+     *
+     * @param $context
+     */
 	protected function _setFeatured($context)
 	{
-		if (in_array('featured', $context->data->getModified())) {
-			if($context->data->featured) {
+		if (in_array('featured', $context->data->getModified()) || in_array('enabled', $context->data->getModified())) {
+            $row = $this->getService('com://admin/featured.model.nodes')->row($context->data->id)->table($this->getMixer()->getTable()->getBase())->getItem();
+
+            if($context->data->featured && $context->data->enabled) {
 				$identifier 				= $context->data->getIdentifier();
 				$identifier->application	= 'site';
 				$identifier->path 			= array('model');
 				$identifier->name 			= KInflector::pluralize($identifier->name);
 
-				$row = $this->getService('com://admin/featured.model.nodes')->row($context->data->id)->table($this->getMixer()->getTable()->getBase())->getItem();
 				$row->setData(array(
 					'row'			=> $context->data->id,
 					'table'			=> $this->getMixer()->getTable()->getBase(),
@@ -47,8 +93,44 @@ class ComFeaturedDatabaseBehaviorFeatureable extends KDatabaseBehaviorAbstract
 				));
 				$row->save();
 			} else {
-				$this->getService('com://admin/featured.model.nodes')->row($context->data->id)->table($this->getMixer()->getTable()->getBase())->getItem()->delete();
+                $this->_remove($row);
 			}
 		}
 	}
+
+    /**
+     * @return array
+     */
+    public function getLanguages()
+    {
+        $languages = JLanguageHelper::getLanguages();
+        foreach($languages as $i => &$language) {
+            if (!JLanguage::exists($language->lang_code)) {
+                unset($languages[$i]);
+                continue;
+            }
+        }
+
+        return $languages;
+    }
+
+    /**
+     * @param $iso_code
+     * @param $table
+     * @return string
+     */
+    public function getTableName($iso_code, $table)
+    {
+        $name = $table->getBase();
+
+        if($iso_code != 'en') {
+            try {
+                if($table->getDatabase()->getTableSchema($iso_code.'_'.$name)) {
+                    $name = $iso_code.'_'.$name;
+                }
+            } catch(Exception $e) { }
+        }
+
+        return $name;
+    }
 }
