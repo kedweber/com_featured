@@ -13,17 +13,7 @@ class ComFeaturedModelNodes extends ComDefaultModelDefault
 
 		$this->_state
 			->insert('sort'     		, 'cmd', 'published_on')
-			->insert('direction'		, 'word', 'desc')
-		;
+			->insert('direction'		, 'word', 'desc');
 	}
 
-    /**
-     * @param KDatabaseQuery $query
-     */
-    protected function _buildQueryWhere(KDatabaseQuery $query)
-    {
-        parent::_buildQueryWhere($query);
-
-//        $query->where('tbl.enabled', '=', 1);
-    }
 }
