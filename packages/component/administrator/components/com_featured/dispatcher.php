@@ -7,7 +7,7 @@ class ComFeaturedDispatcher extends ComDefaultDispatcher
     protected function _initialize(KConfig $config)
     {
         $config->append(array(
-            'controller' => 'types',
+            'controller' => 'nodes',
         ));
 
         parent::_initialize($config);
