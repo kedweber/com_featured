@@ -2,7 +2,7 @@
     "name": "cta/featured",
     "type": "joomlatools-installer",
     "description": "Featured Package",
-    "keywords": ["joomla", "featured"],
+    "keywords": ["joomla", "nooku", "featured"],
     "homepage": "https://github.com/cta-int/featured",
     "authors": [
         {
