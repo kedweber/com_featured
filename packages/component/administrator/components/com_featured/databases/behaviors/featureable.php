@@ -76,7 +76,7 @@ class ComFeaturedDatabaseBehaviorFeatureable extends KDatabaseBehaviorAbstract
      */
 	protected function _setFeatured($context)
 	{
-		if (in_array('featured', $context->data->getModified()) || in_array('enabled', $context->data->getModified())) {
+		if (in_array('featured', $context->data->getModified()) || in_array('enabled', $context->data->getModified()) || in_array('publish_up', $context->data->getModified()) || in_array('created_on', $context->data->getModified())) {
             $row = $this->getService('com://admin/featured.model.nodes')->row($context->data->id)->table($this->getMixer()->getTable()->getBase())->getItem();
 
             if($context->data->featured && $context->data->enabled) {
