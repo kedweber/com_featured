@@ -29,10 +29,8 @@ class ComFeaturedViewNodesFeed extends KViewAbstract
             $feed_item->description = $item->introtext;
             $feed_item->date        = $item->publish_up;
 
-            $category = json_decode($item->ancestors)->category;
-
-            if(is_numeric($category)) {
-                $feed_item->category = $this->getService('com://site/makundi.model.categories')->id($category)->getItem()->title;
+            if($item->isRelationable() && $item->category) {
+                $feed_item->category = $item->category->title;
             }
 
             $doc->addItem($feed_item);
