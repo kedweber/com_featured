@@ -1,10 +1,21 @@
 <?php
 
-class ComFeaturedViewFeaturedFeed extends KViewAbstract
+/**
+ * Com
+ *
+ * @author 		Jasper van Rijbroek <jasper@moyoweb.nl>
+ * @category
+ * @package
+ * @subpackage
+ */
+
+defined('KOOWA') or die('Restricted Access');
+
+class ComFeaturedViewNodesFeed extends KViewAbstract
 {
     public function display()
     {
-        $items	    = $this->getService('com://site/featured.model.nodes')->limit(20)->getList();
+        $items	    = $this->getModel()->limit(20)->getList();
         $doc		= JFactory::getDocument();
 
         foreach($items as $item) {
