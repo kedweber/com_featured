@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0.0" method="upgrade" overwrite="true">
     <name>Featured</name>
-    <author>Joep van der Heijden</author>
+    <author>Moyo Web Architects</author>
     <creationDate>February 2014</creationDate>
     <copyright>Copyright (C) 2014 Moyo Web Architects and Contributors. (http://www.moyoweb.nl)</copyright>
     <license>http://www.gnu.org/licenses/gpl.html GNU/GPL v3</license>
     <authorEmail>joep.van.der.heijden@moyoweb.nl</authorEmail>
     <authorUrl>www.moyoweb.nl</authorUrl>
-    <version>2.0.4</version>
+    <version>2.0.5</version>
     <description>Display featured items</description>
 
     <install>
