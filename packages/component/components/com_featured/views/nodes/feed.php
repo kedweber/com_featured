@@ -25,7 +25,7 @@ class ComFeaturedViewNodesFeed extends KViewAbstract
 
             $feed_item  = new JFeedItem();
             $feed_item->title       = $item->title;
-            $feed_item->link        = $this->createRoute('option=com_' . $option . '&view=' . $view . '&date=' . date('Y-m-d', strtotime($item->publish_up)) . '&id=' . $item->id . '&slug=' . $item->slug . '&format=html');
+            $feed_item->link        = $this->createRoute('option=com_' . $option . '&view=' . $view . '&id=' . $item->id . '&format=html');
             $feed_item->description = $item->introtext;
             $feed_item->date        = $item->publish_up;
 
