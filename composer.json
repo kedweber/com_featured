@@ -3,7 +3,7 @@
     "type": "joomlatools-installer",
     "description": "Featured Package",
     "keywords": ["joomla", "nooku", "featured"],
-    "homepage": "https://github.com/moyoweb/featured",
+    "homepage": "https://github.com/moyoweb/com_featured",
     "authors": [
         {
             "name": "Dave Li",
