@@ -52,8 +52,8 @@ Afterward, just run `composer update` from the root of your Joomla project.
 
 ### jsymlinker
 
-	Another option, currently only available for Moyo developers, is by using the jsymlink script from the [Moyo Git
-	Tools](https://github.com/derjoachim/moyo-git-tools).
+	Another option, currently only available for Moyo developers, is by using the jsymlink script from the 
+	[Moyo Git Tools](https://github.com/derjoachim/moyo-git-tools).
 
 ## Usage
 
