@@ -1,9 +1,9 @@
 {
-    "name": "cta/featured",
+    "name": "moyo/featured",
     "type": "joomlatools-installer",
     "description": "Featured Package",
     "keywords": ["joomla", "nooku", "featured"],
-    "homepage": "https://github.com/cta-int/featured",
+    "homepage": "https://github.com/moyoweb/featured",
     "authors": [
         {
             "name": "Dave Li",
